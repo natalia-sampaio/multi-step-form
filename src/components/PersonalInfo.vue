@@ -5,7 +5,7 @@ import FormItem from './FormItem.vue';
 </script>
 
 <template>
-  <Card>
+  <Card class="mt-[-4rem]">
       <template #title>Personal info</template>
       <template #description>Please provide your name, email address and phone number.</template>
       <template #body>
