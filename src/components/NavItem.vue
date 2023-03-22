@@ -6,5 +6,5 @@ defineProps({
 </script>
 
 <template>
-    <button :isCurrentPage="isCurrentPage" class="w-10 h-10 border-2 border-white m-2 rounded-full">{{ page }}</button>
+    <button :isCurrentPage="isCurrentPage" class="w-10 h-10 border border-white m-2 rounded-full font-bold">{{ page }}</button>
 </template>

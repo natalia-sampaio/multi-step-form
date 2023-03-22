@@ -1,81 +1,32 @@
 <script setup>
-import FormItem from './FormItem.vue'
+import Card from './Card.vue';
+import FormItem from './FormItem.vue';
+
 </script>
 
 <template>
-  <FormItem>
-    <template #icon>
-      <DocumentationIcon />
-    </template>
-    <template #heading>Documentation</template>
-
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
-  </FormItem>
-
-  <FormItem>
-    <template #icon>
-      <ToolingIcon />
-    </template>
-    <template #heading>Tooling</template>
-
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
-    <a href="https://on.cypress.io/component" target="_blank">Cypress Component Testing</a>.
-
-    <br />
-
-    More instructions are available in <code>README.md</code>.
-  </FormItem>
-
-  <FormItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading>Ecosystem</template>
-
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
-  </FormItem>
-
-  <FormItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Community</template>
-
-    Got stuck? Ask your question on
-    <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>, our official
-    Discord server, or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also subscribe to
-    <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a> and follow
-    the official
-    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    twitter account for latest news in the Vue world.
-  </FormItem>
-
-  <FormItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
-
-    As an independent project, Vue relies on community backing for its sustainability. You can help
-    us by
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
-  </FormItem>
+  <Card>
+      <template #title>Personal info</template>
+      <template #description>Please provide your name, email address and phone number.</template>
+      <template #body>
+        <FormItem>
+          <template #label>
+            Name
+            <input type="text" placeholder="e.g. Casimiro Silva" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer active:border-blue-purplish py-2 pl-4">
+          </template>
+        </FormItem>
+        <FormItem>
+          <template #label>
+            Email Address
+            <input type="email" placeholder="e.g. casimiro.silva@lorem.ip" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer active:border-blue-purplish py-2 pl-4">
+          </template>
+        </FormItem>
+        <FormItem>
+          <template #label>
+            Phone Number
+            <input type="phone" placeholder="e.g. +12 345 678 910" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer active:border-blue-purplish py-2 pl-4">
+          </template>
+        </FormItem>
+      </template>
+  </Card>
 </template>

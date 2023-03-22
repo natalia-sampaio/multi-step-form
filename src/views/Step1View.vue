@@ -3,7 +3,5 @@ import PersonalInfo from '../components/PersonalInfo.vue'
 </script>
 
 <template>
-  <main>
-    <PersonalInfo />
-  </main>
+  <PersonalInfo />
 </template>
