@@ -2,6 +2,14 @@
 import Card from '../components/Card.vue';
 </script>
 
+<script>
+export default {
+    props: {
+        yearly: Boolean
+    }
+}
+</script>
+
 <template>
     <Card>
         <template #title>Pick add-ons</template>
@@ -15,7 +23,7 @@ import Card from '../components/Card.vue';
                     <p class="text-gray-cool text-sm font-medium">Access to multiplayer games</p>
                     </div>
                     <div class="text-blue-purplish text-xs font-medium ">
-                        <p v-if="!checked">+$1/mo</p>
+                        <p v-if="!yearly">+$1/mo</p>
                         <p v-else>+$10/yr</p>
                     </div>
                 </div>
@@ -28,7 +36,7 @@ import Card from '../components/Card.vue';
                         <p class="text-gray-cool text-sm font-medium">Extra 1TB of cloud save</p>
                     </div>
                     <div class="text-blue-purplish text-xs font-medium">
-                        <p v-if="!checked">+$2/mo</p>
+                        <p v-if="!yearly">+$2/mo</p>
                         <p v-else>+$20/yr</p>
                     </div>
                 </div>
@@ -41,7 +49,7 @@ import Card from '../components/Card.vue';
                         <p class="text-gray-cool text-sm font-medium">Custom theme on your profile</p>
                     </div>
                     <div class="text-blue-purplish text-xs font-medium">
-                        <p v-if="!checked">+$2/mo</p>
+                        <p v-if="!yearly">+$2/mo</p>
                         <p v-else>+$20/yr</p>
                     </div>
                 </div>

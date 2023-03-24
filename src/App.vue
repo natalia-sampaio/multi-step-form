@@ -1,20 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Sidebar from './components/Sidebar.vue'
+import AddOnsView from './views/AddOnsView.vue';
+import PersonalInfoView from './views/PersonalInfoView.vue';
+import SelectPlanView from './views/SelectPlanView.vue';
+
 </script>
 
 <script>
 export default {
   data() {
     return {
-      page: 1
-    }
-  },
-  methods: {
-    goBack() {
-      this.page--
-      return this.$router.go(-1)
-    }
+      page: 1,
+      yearly: false
+    };
   }
 }
 </script>
@@ -28,9 +27,13 @@ export default {
       <Sidebar page="4" />
     </nav>
   </div>
-  <RouterView />
+  <PersonalInfoView v-if="page === 1" />
+  <SelectPlanView v-if="page === 2" v-model:yearly="yearly" />
+  <AddOnsView v-if="page === 3" :yearly="yearly" />
+
   <div class="flex justify-between items-center bg-white absolute bottom-0 w-full">
-    <button v-if="page > 1" @click="goBack" class="text-gray-cool font-semibold m-4">Go back</button>
-    <button @click="() => {page++; $router.push({name: `page${page}`})}" class="bg-blue-marine rounded text-white px-4 py-2 m-4 relative ">Next Step</button>
+    <button v-show="page > 1" @click="() => { page-- }" class="text-gray-cool font-semibold m-4">Go back</button>
+    <button @click="() => { page++ }" class="bg-blue-marine rounded text-white px-4 py-2 m-4 relative ">Next Step</button>
   </div>
+
 </template>
