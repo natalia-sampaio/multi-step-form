@@ -3,13 +3,13 @@ import Card from '../components/Card.vue';
 import IconArcade from '../components/icons/IconArcade.vue';
 import IconAdvanced from '../components/icons/IconAdvanced.vue';
 import IconPro from '../components/icons/IconPro.vue';
+import { RouterLink } from 'vue-router';
 </script>
 
 <script>
 export default {
     props: {
-        yearly: Boolean,
-        page: Number
+        yearly: Boolean
     }
 }
 </script>
@@ -57,8 +57,10 @@ export default {
             </div>
         </template>
     </Card>
-    <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
-        <button @click="$emit('update:page', 1)" class="text-gray-cool m-4 justify-self-start">Go back</button>
-        <button @click="$emit('update:page', 3)" class="bg-blue-marine rounded text-white px-4 py-2 m-4 justify-self-end col-start-2">Next Step</button>
+    <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
+        <RouterLink to="/" class=" justify-self-start">
+        <button class="text-gray-cool m-4">Go back</button></RouterLink>
+        <RouterLink to="/add-ons" class="justify-self-end col-start-2">
+        <button class="bg-blue-marine rounded text-white px-4 py-2 m-4">Next Step</button></RouterLink>
     </div>
 </template>

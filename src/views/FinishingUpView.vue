@@ -1,12 +1,12 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 import Card from '../components/Card.vue';
 </script>
 
 <script>
 export default {
     props: {
-        yearly: Boolean,
-        page: Number
+        yearly: Boolean
     }
 }
 </script>
@@ -20,7 +20,7 @@ export default {
                 <div class="flex justify-between border-b border-gray-light pb-2">
                     <div class="grid place-items-start">
                         <span>Arcade (<span v-if="!yearly">Monthly</span><span v-else>Yearly</span>)</span>
-                        <button class="text-gray-cool underline font-medium" @click="$emit('update:page', 2)">Change</button>                       
+                        <RouterLink to="/select-plan"><button class="text-gray-cool underline font-medium">Change</button></RouterLink>                  
                     </div>
                     <div>
                         <span v-if="!yearly">$9/mo</span>
@@ -53,8 +53,10 @@ export default {
             </div>
         </template>
     </Card>
-    <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
-        <button @click="$emit('update:page', 3)" class="text-gray-cool m-4 justify-self-start">Go back</button>
-        <button @click="$emit('update:page', 5)" class="bg-blue-purplish rounded text-white px-4 py-2 m-4 justify-self-end">Confirm</button>
+    <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
+        <RouterLink to="/add-ons" class="justify-self-start">
+        <button class="text-gray-cool m-4">Go back</button></RouterLink>
+        <RouterLink to="/thank-you" class="justify-self-end">
+        <button class="bg-blue-purplish rounded text-white px-4 py-2 m-4">Confirm</button></RouterLink>
       </div>
 </template>

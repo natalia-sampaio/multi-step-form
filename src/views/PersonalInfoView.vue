@@ -6,7 +6,6 @@ import FormItem from '../components/FormItem.vue';
 <script>
 export default {
   props: {
-    page: Number
   },
   data() {
     return {
@@ -48,6 +47,8 @@ export default {
   </Card>
 
   <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
-      <button @click="$emit('update:page', 2)" @submit="submitForm" class="bg-blue-marine rounded text-white px-4 py-2 m-4 justify-self-end col-start-2">Next Step</button>
+    <RouterLink to="/select-plan" class="justify-self-end col-start-2">
+      <button class="bg-blue-marine rounded text-white px-4 py-2 m-4">Next Step</button>
+    </RouterLink>
   </div>
 </template>

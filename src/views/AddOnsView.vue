@@ -1,12 +1,12 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 import Card from '../components/Card.vue';
 </script>
 
 <script>
 export default {
     props: {
-        yearly: Boolean,
-        page: Number
+        yearly: Boolean
     }
 }
 </script>
@@ -57,8 +57,11 @@ export default {
             </label>
           </template>
     </Card>
-    <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
-        <button @click="$emit('update:page', 2)" class="text-gray-cool m-4 justify-self-start">Go back</button>
-        <button @click="$emit('update:page', 4)" class="bg-blue-marine rounded text-white px-4 py-2 m-4 justify-self-end col-start-2">Next Step</button>
+    <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
+        <RouterLink to="/select-plan" class="justify-self-start">
+        <button class="text-gray-cool m-4">Go back</button></RouterLink>
+        <RouterLink to="/finishing-up" class="justify-self-end col-start-2">
+        <button class="bg-blue-marine rounded text-white px-4 py-2 m-4">Next Step</button>
+        </RouterLink>
       </div>
 </template>
