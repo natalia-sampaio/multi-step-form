@@ -18,7 +18,7 @@ export default {
         <template #title>Select your plan</template>
         <template #description>You have the option of monthly or yearly billing.</template>
         <template #body>
-            <label class="font-semibold flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
+            <label class="flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
                 <input type="checkbox" class="hidden peer" aria-label="arcade checkbox">
                 <IconArcade />
                 <div class="ml-4">
@@ -27,7 +27,7 @@ export default {
                     <p v-else class="text-gray-cool font-normal">$90/yr</p>
                 </div>
             </label>
-            <label class="font-semibold flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
+            <label class="flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
                 <input type="checkbox" class="hidden peer" aria-label="arcade checkbox">
                 <IconAdvanced />
                 <div class="ml-4">
@@ -36,7 +36,7 @@ export default {
                     <p v-else class="text-gray-cool font-normal">$120/yr</p>
                 </div>
             </label>
-            <label class="font-semibold flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
+            <label class="flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
                 <input type="checkbox" class="hidden peer" aria-label="arcade checkbox">
                 <IconPro />
                 <div class="ml-4">
@@ -46,7 +46,7 @@ export default {
                 </div>
             </label>
 
-            <div class="flex justify-center items-center bg-blue-light p-3 rounded-md font-semibold mt-6">
+            <div class="flex justify-center items-center bg-magnolia p-3 rounded-md mt-6">
                 <span class="mr-3">Monthly</span>
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" class="sr-only peer" :checked="yearly" @change="$emit('update:yearly', $event.target.checked)" aria-label="arcade checkbox">

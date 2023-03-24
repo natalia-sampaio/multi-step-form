@@ -15,7 +15,7 @@ export default {
         <template #title>Pick add-ons</template>
         <template #description>Please provide your name, email address and phone number.</template>
         <template #body>
-            <label class="font-semibold flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
+            <label class="flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
                 <input type="checkbox" class="peer accent-blue-purplish w-4 h-4" aria-label="arcade checkbox">
                 <div class="ml-4 flex items-center justify-between w-full">
                     <div>
@@ -28,7 +28,7 @@ export default {
                     </div>
                 </div>
             </label>
-            <label class="font-semibold flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
+            <label class="flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
                 <input type="checkbox" class="peer accent-blue-purplish w-4 h-4" aria-label="arcade checkbox">
                 <div class="ml-4 flex items-center justify-between w-full">
                     <div>
@@ -41,7 +41,7 @@ export default {
                     </div>
                 </div>
             </label>
-            <label class="font-semibold flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
+            <label class="flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
                 <input type="checkbox" class="peer accent-blue-purplish w-4 h-4" aria-label="arcade checkbox">
                 <div class="ml-4 flex items-center justify-between w-full">
                     <div>

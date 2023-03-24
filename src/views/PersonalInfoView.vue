@@ -1,7 +1,6 @@
 <script setup>
 import Card from '../components/Card.vue';
 import FormItem from '../components/FormItem.vue';
-
 </script>
 
 <template>
