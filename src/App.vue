@@ -29,16 +29,10 @@ export default {
     </nav>
   </div>
 
-  <PersonalInfoView v-if="page == 1" />
-  <SelectPlanView v-if="page == 2" v-model:yearly="yearly" />
-  <AddOnsView v-if="page == 3" :yearly="yearly" />
+  <PersonalInfoView v-if="page == 1" v-model:page="page"/>
+  <SelectPlanView v-if="page == 2" v-model:yearly="yearly" v-model:page="page"/>
+  <AddOnsView v-if="page == 3" :yearly="yearly" v-model:page="page"/>
   <FinishingUpView v-if="page == 4" :yearly="yearly" v-model:page="page"/>
-  <ThankYouView v-if="page == 5" />
-
-  <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold" v-if="page < 5">
-    <button v-show="page > 1" @click="() => { page-- }" class="text-gray-cool m-4 justify-self-start">Go back</button>
-    <button v-if="page == 4" @click="() => { page++ }" class="bg-blue-purplish rounded text-white px-4 py-2 m-4 justify-self-end">Confirm</button>
-    <button v-else @click="() => { page++ }" class="bg-blue-marine rounded text-white px-4 py-2 m-4 justify-self-end col-start-2">Next Step</button>
-  </div>
+  <ThankYouView v-if="page == 5"/>
 
 </template>

@@ -5,7 +5,8 @@ import Card from '../components/Card.vue';
 <script>
 export default {
     props: {
-        yearly: Boolean
+        yearly: Boolean,
+        page: Number
     }
 }
 </script>
@@ -56,4 +57,8 @@ export default {
             </label>
           </template>
     </Card>
+    <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
+        <button @click="$emit('update:page', 2)" class="text-gray-cool m-4 justify-self-start">Go back</button>
+        <button @click="$emit('update:page', 4)" class="bg-blue-marine rounded text-white px-4 py-2 m-4 justify-self-end col-start-2">Next Step</button>
+      </div>
 </template>
