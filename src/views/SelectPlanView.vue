@@ -46,7 +46,7 @@ export default {
                 </div>
             </label>
 
-            <div class="flex justify-center items-center bg-magnolia p-3 rounded-md mt-6">
+            <div class="flex justify-center items-center bg-alabaster p-3 rounded-md mt-6">
                 <span class="mr-3">Monthly</span>
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" class="sr-only peer" :checked="yearly" @change="$emit('update:yearly', $event.target.checked)" aria-label="arcade checkbox">
