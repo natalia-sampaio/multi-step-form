@@ -49,7 +49,7 @@ export default {
             <div class="flex justify-center items-center bg-blue-light p-3 rounded-md font-semibold mt-6">
                 <span class="mr-3">Monthly</span>
                 <label class="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" class="sr-only peer" :checked="yearly" @change="$emit('update:yearly', $event.target.value)" aria-label="arcade checkbox">
+                    <input type="checkbox" class="sr-only peer" :checked="yearly" @change="$emit('update:yearly', $event.target.checked)" aria-label="arcade checkbox">
                     <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-blue-marine peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[3.5px] after:left-[6px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
                 </label>
                 <span class="ml-3 text-gray-cool">Yearly</span>
