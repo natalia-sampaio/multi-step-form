@@ -3,7 +3,7 @@
 
 <template>
     <div class="bg-white mx-4 p-6 rounded-xl mt-[-4rem] shadow-xl">
-        <h2 class="text-blue-marine font-bold text-xl">
+        <h2 class="text-blue-marine font-bold text-xl my-2">
             <slot name="title"></slot>
         </h2>
         <p class="text-gray-cool">

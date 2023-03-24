@@ -18,9 +18,9 @@ export default {
         <template #body>
             <div class="bg-magnolia rounded-md p-4">
                 <div class="flex justify-between border-b border-gray-light pb-2">
-                    <div>
-                        Arcade (<span v-if="!yearly">Monthly</span><span v-else>Yearly</span>)                        
-                        <div class="text-gray-cool underline font-medium"><a href="#">Change</a></div>                        
+                    <div class="grid place-items-start">
+                        <span>Arcade (<span v-if="!yearly">Monthly</span><span v-else>Yearly</span>)</span>
+                        <button @click="() => { page = 2 }" class="text-gray-cool underline font-medium">Change</button>                       
                     </div>
                     <div>
                         <span v-if="!yearly">$9/mo</span>
