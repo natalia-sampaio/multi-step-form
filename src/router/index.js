@@ -18,12 +18,12 @@ const router = createRouter({
       component: () => import('../views/SelectPlanView.vue')
     },
     {
-      path: '/step3',
+      path: '/add-ons',
       name: 'page3',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Step3View.vue')
+      component: () => import('../views/AddOnsView.vue')
     },
     {
       path: '/step4',

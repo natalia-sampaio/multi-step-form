@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <Card class="mt-[-4rem]">
+    <Card>
         <template #title>Select your plan</template>
         <template #description>You have the option of monthly or yearly billing.</template>
         <template #body>
