@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="mx-4 p-6 mt-[-4rem] bg-white rounded-xl shadow-xl lg:m-auto">
+    <div class="mx-4 p-6 mt-[-4rem] bg-white rounded-xl shadow-xl lg:m-0 lg:h-3/4 lg:px-28 lg:py-16 lg:rounded-tl-none lg:rounded-bl-none lg:shadow-none">
         <h2 class="text-blue-marine font-bold text-xl my-2 lg:text-3xl">
             <slot name="title"></slot>
         </h2>
