@@ -1,5 +1,9 @@
 <template>
     <label class="text-blue-marine text-sm grid my-4">
-      <slot name="label"></slot>
+      <div class="flex justify-between">
+        <h3><slot name="label"></slot></h3>
+        <span class="text-red-600"><slot name="error"></slot></span>
+      </div>
+      <slot></slot>
     </label>
 </template>

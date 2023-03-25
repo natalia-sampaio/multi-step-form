@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <div class="mobile:bg-sidebar-mobile bg-cover bg-no-repeat mobile:h-[172px]">
+  <div class="bg-sidebar-mobile bg-cover bg-no-repeat h-[172px] lg:hidden">
     <nav class="text-center text-white pt-8">
       <Sidebar page="1" :class="$route.name === 'page1' ? 'bg-blue-light text-blue-marine' : ''"/>
       <Sidebar page="2" :class="$route.name === 'page2' ? 'bg-blue-light text-blue-marine' : ''"/>
@@ -24,5 +24,4 @@ export default {
   </div>
 
   <RouterView v-model:yearly="yearly" :yearly="yearly" />
-
 </template>

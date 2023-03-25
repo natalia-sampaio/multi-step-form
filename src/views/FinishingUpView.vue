@@ -55,8 +55,10 @@ export default {
     </Card>
     <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
         <RouterLink to="/add-ons" class="justify-self-start">
-        <button class="text-gray-cool m-4">Go back</button></RouterLink>
+            <button class="text-gray-cool m-4">Go back</button>
+        </RouterLink>
         <RouterLink to="/thank-you" class="justify-self-end">
-        <button class="bg-blue-purplish rounded text-white px-4 py-2 m-4">Confirm</button></RouterLink>
-      </div>
+            <button class="bg-blue-purplish rounded text-white px-4 py-2 m-4">Confirm</button>
+        </RouterLink>
+    </div>
 </template>
