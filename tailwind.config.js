@@ -37,6 +37,22 @@ module.exports = {
       screens: {
         'mobile': '365px',
         'desktop': '1440px'
+      },
+      keyframes: {
+        button_shake_kf: {
+          '0%, 100%': {
+            transform: 'translate(0)'
+          },
+          '25%, 75%': {
+            transform: 'translate(5px)'
+          },
+          '50%': {
+            transform: 'translate(-5px)'
+          }
+        }
+      },
+      animation: {
+        button_shake: 'button_shake_kf 0.35s'
       }
     },
   },

@@ -4,6 +4,7 @@ import FormItem from '../components/FormItem.vue';
 import useVuelidate from '@vuelidate/core';
 import { required, minLength, email, numeric } from '@vuelidate/validators'
 import { reactive, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 const formData = reactive({
   name: "",
@@ -30,12 +31,14 @@ const rules = computed(() => {
 
 const v$ = useVuelidate(rules, formData);
 
+const router = useRouter();
+
 const submitForm = async () => {
   const result = await v$.value.$validate();
-  if(result)  {
-    alert('success')
+  if(result) {
+    router.push('/select-plan')
   } else {
-    alert('failed')
+    router.push('/')
   }
 }
 </script>
@@ -76,8 +79,6 @@ const submitForm = async () => {
   </Card>
 
   <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
-    <RouterLink :to="error ? '/select-plan' : ''" class="justify-self-end col-start-2">
-      <button class="bg-blue-marine rounded text-white px-4 py-2 m-4" @click="submitForm">Next Step</button>
-    </RouterLink>
+    <button class="focus:animate-button_shake justify-self-end col-start-2 bg-blue-marine rounded text-white px-4 py-2 m-4 " @click="submitForm">Next Step</button>
   </div>
 </template>
