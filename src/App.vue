@@ -1,10 +1,5 @@
 <script setup>
 import Sidebar from './components/Sidebar.vue'
-import AddOnsView from './views/AddOnsView.vue';
-import FinishingUpView from './views/FinishingUpView.vue';
-import PersonalInfoView from './views/PersonalInfoView.vue';
-import SelectPlanView from './views/SelectPlanView.vue';
-import ThankYouView from './views/ThankYouView.vue';
 
 </script>
 

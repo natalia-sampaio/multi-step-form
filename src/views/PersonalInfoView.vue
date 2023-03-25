@@ -1,21 +1,41 @@
 <script setup>
 import Card from '../components/Card.vue';
 import FormItem from '../components/FormItem.vue';
-</script>
+import useVuelidate from '@vuelidate/core';
+import { required, minLength, email, numeric } from '@vuelidate/validators'
+import { reactive, computed } from 'vue';
 
-<script>
-export default {
-  props: {
-  },
-  data() {
-    return {
-      name: '',
-      email: '',
-      phoneNumber: ''
+const formData = reactive({
+  name: "",
+  email: "",
+  phoneNumber: ""
+});
+
+const rules = computed(() => {
+  return {
+    name: {
+      required,
+      minLength: minLength(3)
+    },
+    email: {
+      required,
+      email
+    },
+    phoneNumber: {
+      required,
+      numeric
     }
-  },
-  methods:{
-    
+  }
+});
+
+const v$ = useVuelidate(rules, formData);
+
+const submitForm = async () => {
+  const result = await v$.value.$validate();
+  if(result)  {
+    alert('success')
+  } else {
+    alert('failed')
   }
 }
 </script>
@@ -27,28 +47,37 @@ export default {
     <template #body>
       <FormItem>
         <template #label>
-          <span>Name</span><span></span>
-          <input type="text" placeholder="e.g. Casimiro Silva" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer focus:border-blue-purplish focus:outline-none py-2 pl-4" aria-label="name input" required v-model="name">
+          <div class="flex justify-between">
+            <span>Name</span>
+            <span v-for="error in v$.name.$errors" :key="error.$uid" class="text-red-600">{{ error.$message }}</span>
+          </div>
+          <input type="text" placeholder="e.g. Casimiro Silva" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer focus:border-blue-purplish focus:outline-none py-2 pl-4" aria-label="name input" v-model="formData.name">
         </template>
       </FormItem>
       <FormItem>
         <template #label>
-          Email Address
-          <input type="email" placeholder="e.g. casimiro.silva@lorem.ip" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer focus:border-blue-purplish focus:outline-none py-2 pl-4" aria-label="email input" required v-model="email">
+          <div class="flex justify-between">
+            <span>Email Address</span>
+            <span v-for="error in v$.email.$errors" :key="error.$uid" class="text-red-600">{{ error.$message }}</span>
+          </div>
+          <input type="email" placeholder="e.g. casimiro.silva@lorem.ip" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer focus:border-blue-purplish focus:outline-none py-2 pl-4" aria-label="email input" v-model="formData.email">
         </template>
       </FormItem>
       <FormItem>
         <template #label>
-          Phone Number
-          <input type="phone" placeholder="e.g. +12 345 678 910" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer focus:border-blue-purplish focus:outline-none py-2 pl-4" aria-label="phone number input" required v-model="phoneNumber">
+          <div class="flex justify-between">
+            <span>Phone Number</span>
+            <span v-for="error in v$.phoneNumber.$errors" :key="error.$uid" class="text-red-600">{{ error.$message }}</span>
+          </div>
+          <input type="phone" placeholder="e.g. +12 345 678 910" class="border border-gray-light p-0 rounded font-semibold text-base hover:cursor-pointer focus:border-blue-purplish focus:outline-none py-2 pl-4" aria-label="phone number input" v-model="formData.phoneNumber">
         </template>
       </FormItem>
       </template>
   </Card>
 
   <div class="grid grid-cols-2 bg-white fixed bottom-0 w-full font-semibold">
-    <RouterLink to="/select-plan" class="justify-self-end col-start-2">
-      <button class="bg-blue-marine rounded text-white px-4 py-2 m-4">Next Step</button>
+    <RouterLink :to="error ? '/select-plan' : ''" class="justify-self-end col-start-2">
+      <button class="bg-blue-marine rounded text-white px-4 py-2 m-4" @click="submitForm">Next Step</button>
     </RouterLink>
   </div>
 </template>
