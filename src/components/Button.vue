@@ -1,0 +1,10 @@
+<script setup>
+defineProps({
+    name: "",
+    extraClasses: ""
+})
+</script>
+
+<template>
+    <button :class="'focus:animate-button_shake justify-self-end col-start-2 rounded text-white px-4 py-2 m-4 mr-0 lg:rounded-md ' + extraClasses">{{ name }}</button>
+</template>

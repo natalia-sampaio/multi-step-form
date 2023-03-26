@@ -1,9 +1,21 @@
 <script setup>
+import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
 import IconArcade from '../components/icons/IconArcade.vue';
 import IconAdvanced from '../components/icons/IconAdvanced.vue';
 import IconPro from '../components/icons/IconPro.vue';
-import { RouterLink } from 'vue-router';
+import { useRouter } from 'vue-router';
+import SelectPlanItem from '../components/SelectPlanItem.vue';
+
+const router = useRouter();
+
+const nextStep = () => {
+    router.push('/add-ons')
+}
+
+const goBack = () => {
+    router.push('/')
+}
 </script>
 
 <script>
@@ -19,34 +31,23 @@ export default {
         <template #title>Select your plan</template>
         <template #description>You have the option of monthly or yearly billing.</template>
         <template #body>
-            <label class="flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
-                <input type="checkbox" class="hidden peer" aria-label="arcade checkbox">
-                <IconArcade />
-                <div class="ml-4">
-                    Arcade
-                    <p v-if="!yearly" class="text-gray-cool font-normal">$9/mo</p>
-                    <p v-else class="text-gray-cool font-normal">$90/yr</p>
-                </div>
-            </label>
-            <label class="flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
-                <input type="checkbox" class="hidden peer" aria-label="arcade checkbox">
-                <IconAdvanced />
-                <div class="ml-4">
-                    Advanced
-                    <p v-if="!yearly" class="text-gray-cool font-normal">$12/mo</p>
-                    <p v-else class="text-gray-cool font-normal">$120/yr</p>
-                </div>
-            </label>
-            <label class="flex items-center border border-gray-light peer-checked:bg-blue-700 hover:cursor-pointer rounded-md p-3 my-2">
-                <input type="checkbox" class="hidden peer" aria-label="arcade checkbox">
-                <IconPro />
-                <div class="ml-4">
-                    Pro
-                    <p v-if="!yearly" class="text-gray-cool font-normal">$15/mo</p>
-                    <p v-else class="text-gray-cool font-normal">$150/yr</p>
-                </div>
-            </label>
-
+            <fieldset class="lg:flex flex-wrap justify-between">
+                <SelectPlanItem title="arcade" peerName="peer/arcade" peerDefinition="peer-checked/arcade:bg-alabaster peer-checked/arcade:border-blue-purplish">
+                    <IconArcade />
+                    <template v-if="!yearly" #monthlyPrice>$9/mo</template>
+                    <template v-else #yearlyPrice>$90/yr</template>
+                </SelectPlanItem>
+                <SelectPlanItem title="advanced" peerName="peer/advanced" peerDefinition="peer-checked/advanced:bg-alabaster peer-checked/advanced:border-blue-purplish">
+                    <IconAdvanced />
+                    <template v-if="!yearly" #monthlyPrice>$12/mo</template>
+                    <template v-else #yearlyPrice>$120/yr</template>
+                </SelectPlanItem>
+                <SelectPlanItem title="pro" peerName="peer/pro" peerDefinition="peer-checked/pro:bg-alabaster peer-checked/pro:border-blue-purplish">
+                    <IconPro />
+                    <template v-if="!yearly" #monthlyPrice>$15/mo</template>
+                    <template v-else #yearlyPrice>$150/yr</template>
+                </SelectPlanItem>
+            </fieldset>         
             <div class="flex justify-center items-center bg-alabaster p-3 rounded-md mt-6">
                 <span class="mr-3">Monthly</span>
                 <label class="relative inline-flex items-center cursor-pointer">
@@ -56,11 +57,9 @@ export default {
                 <span class="ml-3 text-gray-cool">Yearly</span>
             </div>
         </template>
+        <template #buttons>
+                <button class="text-gray-cool m-4 justify-self-start" @click="goBack">Go back</button>
+                <Button :extraClasses="'bg-blue-marine justify-self-end'" :name="'Next Step'" @click="nextStep"/>
+        </template>
     </Card>
-    <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
-        <RouterLink to="/" class=" justify-self-start">
-        <button class="text-gray-cool m-4">Go back</button></RouterLink>
-        <RouterLink to="/add-ons" class="justify-self-end col-start-2">
-        <button class="bg-blue-marine rounded text-white px-4 py-2 m-4">Next Step</button></RouterLink>
-    </div>
 </template>

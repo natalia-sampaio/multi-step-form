@@ -1,7 +1,8 @@
 <script setup>
 import Card from '../components/Card.vue';
 import FormItem from '../components/FormItem.vue';
-import BaseInput from '../components/BaseInput.vue'
+import BaseInput from '../components/BaseInput.vue';
+import Button from '../components/Button.vue';
 import useVuelidate from '@vuelidate/core';
 import { required, minLength, email, numeric } from '@vuelidate/validators'
 import { reactive, computed } from 'vue';
@@ -65,8 +66,8 @@ const submitForm = async () => {
             <BaseInput type="phone" placeholder="e.g. +12 345 678 910" aria-label="phone number input" v-model="formData.phoneNumber" />
       </FormItem>
       </template>
-      <template #button>
-        <button class="focus:animate-button_shake justify-self-end col-start-2 bg-blue-marine rounded text-white px-4 py-2 m-4 lg:rounded-md" @click="submitForm">Next Step</button>
+      <template #buttons>
+        <Button @click="submitForm" :extraClasses="'bg-blue-marine'" :name="'Next Step'"/>
       </template>
     </Card>
 </template>

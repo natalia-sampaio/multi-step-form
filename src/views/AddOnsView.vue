@@ -1,6 +1,17 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { useRouter,  } from 'vue-router';
+import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
+
+const router = useRouter();
+
+const nextStep = () => {
+    router.push('/finishing-up')
+}
+
+const goBack = () => {
+    router.push('/select-plan')
+}
 </script>
 
 <script>
@@ -55,13 +66,10 @@ export default {
                     </div>
                 </div>
             </label>
-          </template>
+        </template>
+        <template #buttons>
+            <button class="text-gray-cool m-4 justify-self-start" @click="goBack">Go back</button>
+            <Button :extraClasses="'bg-blue-marine justify-self-end'" :name="'Next Step'" @click="nextStep"/>
+        </template>
     </Card>
-    <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
-        <RouterLink to="/select-plan" class="justify-self-start">
-        <button class="text-gray-cool m-4">Go back</button></RouterLink>
-        <RouterLink to="/finishing-up" class="justify-self-end col-start-2">
-        <button class="bg-blue-marine rounded text-white px-4 py-2 m-4">Next Step</button>
-        </RouterLink>
-      </div>
 </template>
