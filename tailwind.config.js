@@ -21,7 +21,7 @@ module.exports = {
           light: 'hsl(229, 24%, 87%)'
         },
         magnolia: 'hsl(217, 100%, 97%)',
-        alabaster: 'hsl(231, 100%, 99%)',
+        alabaster: 'hsl(231, 100%, 97%)',
         white: 'hsl(0, 0%, 100%)'
       },
       fontFamily: {

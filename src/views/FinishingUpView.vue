@@ -1,13 +1,25 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
+import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
+
+const router = useRouter();
+
+const nextStep = () => {
+    router.push('/thank-you')
+}
+
+const goBack = () => {
+    router.push('/add-ons')
+}
 </script>
 
 <script>
 export default {
     props: {
         yearly: Boolean
-    }
+    },
+    components: { Button }
 }
 </script>
 
@@ -16,7 +28,7 @@ export default {
         <template #title>Finishing up</template>
         <template #description>Double-check everything looks OK before confirming.</template>
         <template #body>
-            <div class="bg-alabaster rounded-md p-4">
+            <div class="bg-magnolia rounded-md p-4">
                 <div class="flex justify-between border-b border-gray-light pb-2">
                     <div class="grid place-items-start">
                         <span>Arcade (<span v-if="!yearly">Monthly</span><span v-else>Yearly</span>)</span>
@@ -52,13 +64,9 @@ export default {
                 </div>
             </div>
         </template>
+        <template #buttons>
+            <button class="text-gray-cool m-4 justify-self-start" @click="goBack">Go back</button>
+            <Button :extraClasses="'bg-blue-purplish justify-self-end'" :name="'Confirm'" @click="nextStep"/>
+        </template>
     </Card>
-    <div class="grid grid-cols-2 items-center bg-white fixed bottom-0 w-full font-semibold">
-        <RouterLink to="/add-ons" class="justify-self-start">
-            <button class="text-gray-cool m-4">Go back</button>
-        </RouterLink>
-        <RouterLink to="/thank-you" class="justify-self-end">
-            <button class="bg-blue-purplish rounded text-white px-4 py-2 m-4">Confirm</button>
-        </RouterLink>
-    </div>
 </template>
