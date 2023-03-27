@@ -1,15 +1,14 @@
 <script setup>
 defineProps({
     title: "",
-    monthlyPrice: "",
-    yearlyPrice: "",
     peerName: "",
-    peerDefinition: ""
+    peerDefinition: "",
+    defaultSelection: ""
 })
 </script>
 
 <template>
-    <input :id="`${title}`" name="plan" type="radio" :class="`sr-only` + peerName" :aria-label="`radio for ${title}`" v-model="yearly">
+    <input :id="`${title}`" name="plan" type="radio" :class="`sr-only` + peerName" :aria-label="`radio for ${title}`" checked>
     <label :for="`${title}`" :class="`flex items-center border border-gray-light hover:cursor-pointer rounded-md p-4 my-2 lg:grid lg:w-[30%] ` + peerDefinition">
         <slot></slot>
         <div class="ml-4 lg:ml-0 lg:mt-8">
