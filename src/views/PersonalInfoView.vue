@@ -67,7 +67,7 @@ const submitForm = async () => {
       </FormItem>
       </template>
       <template #buttons>
-        <Button @click="submitForm" :extraClasses="'bg-blue-marine'" :name="'Next Step'"/>
+        <Button @click="submitForm" :extraClasses="'bg-blue-marine focus:animate-button_shake'" :name="'Next Step'"/>
       </template>
     </Card>
 </template>

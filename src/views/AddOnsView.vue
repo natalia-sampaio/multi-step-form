@@ -19,8 +19,7 @@ const goBack = () => {
 export default {
     props: {
         yearly: Boolean
-    },
-    components: { AddOnItem }
+    }
 }
 </script>
 
