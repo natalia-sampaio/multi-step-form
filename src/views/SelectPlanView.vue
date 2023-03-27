@@ -32,20 +32,30 @@ export default {
         <template #description>You have the option of monthly or yearly billing.</template>
         <template #body>
             <fieldset class="lg:flex flex-wrap justify-between">
-                <SelectPlanItem title="arcade" peerName="peer/arcade" peerDefinition="peer-checked/arcade:bg-alabaster peer-checked/arcade:border-blue-purplish">
+                <SelectPlanItem title="arcade" peerName=" peer/arcade" peerDefinition=" peer-checked/arcade:bg-alabaster peer-checked/arcade:border-blue-purplish">
                     <IconArcade />
                     <template v-if="!yearly" #monthlyPrice>$9/mo</template>
-                    <template v-else #yearlyPrice>$90/yr</template>
+                    <template v-else #yearlyPrice>
+                        $90/yr
+                        <p class="text-blue-marine text-xs" >2 months free</p>
+                    </template>
                 </SelectPlanItem>
-                <SelectPlanItem title="advanced" peerName="peer/advanced" peerDefinition="peer-checked/advanced:bg-alabaster peer-checked/advanced:border-blue-purplish">
+                <SelectPlanItem title="advanced" peerName=" peer/advanced" peerDefinition=" peer-checked/advanced:bg-alabaster peer-checked/advanced:border-blue-purplish">
                     <IconAdvanced />
                     <template v-if="!yearly" #monthlyPrice>$12/mo</template>
-                    <template v-else #yearlyPrice>$120/yr</template>
+                    <template v-else #yearlyPrice>
+                        $120/yr
+                        <p class="text-blue-marine text-xs" >2 months free</p>
+                    </template>
+                    
                 </SelectPlanItem>
-                <SelectPlanItem title="pro" peerName="peer/pro" peerDefinition="peer-checked/pro:bg-alabaster peer-checked/pro:border-blue-purplish">
+                <SelectPlanItem title="pro" peerName=" peer/pro" peerDefinition=" peer-checked/pro:bg-alabaster peer-checked/pro:border-blue-purplish">
                     <IconPro />
                     <template v-if="!yearly" #monthlyPrice>$15/mo</template>
-                    <template v-else #yearlyPrice>$150/yr</template>
+                    <template v-else #yearlyPrice>
+                        $150/yr
+                        <p class="text-blue-marine text-xs" >2 months free</p>
+                    </template>
                 </SelectPlanItem>
             </fieldset>         
             <div class="flex justify-center items-center bg-alabaster p-3 rounded-md mt-6">

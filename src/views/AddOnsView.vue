@@ -1,5 +1,6 @@
 <script setup>
 import { useRouter,  } from 'vue-router';
+import AddOnItem from '../components/AddOnItem.vue';
 import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
 
@@ -18,7 +19,8 @@ const goBack = () => {
 export default {
     props: {
         yearly: Boolean
-    }
+    },
+    components: { AddOnItem }
 }
 </script>
 
@@ -27,45 +29,18 @@ export default {
         <template #title>Pick add-ons</template>
         <template #description>Please provide your name, email address and phone number.</template>
         <template #body>
-            <label class="flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
-                <input type="checkbox" class="peer accent-blue-purplish w-4 h-4" aria-label="arcade checkbox">
-                <div class="ml-4 flex items-center justify-between w-full">
-                    <div>
-                    Online service
-                    <p class="text-gray-cool text-sm font-medium">Access to multiplayer games</p>
-                    </div>
-                    <div class="text-blue-purplish text-xs font-medium ">
-                        <p v-if="!yearly">+$1/mo</p>
-                        <p v-else>+$10/yr</p>
-                    </div>
-                </div>
-            </label>
-            <label class="flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
-                <input type="checkbox" class="peer accent-blue-purplish w-4 h-4" aria-label="arcade checkbox">
-                <div class="ml-4 flex items-center justify-between w-full">
-                    <div>
-                        Larger storage
-                        <p class="text-gray-cool text-sm font-medium">Extra 1TB of cloud save</p>
-                    </div>
-                    <div class="text-blue-purplish text-xs font-medium">
-                        <p v-if="!yearly">+$2/mo</p>
-                        <p v-else>+$20/yr</p>
-                    </div>
-                </div>
-            </label>
-            <label class="flex items-center border border-gray-light hover:cursor-pointer rounded-md p-3 my-2">
-                <input type="checkbox" class="peer accent-blue-purplish w-4 h-4" aria-label="arcade checkbox">
-                <div class="ml-4 flex items-center justify-between w-full">
-                    <div>
-                        Customizable profile
-                        <p class="text-gray-cool text-sm font-medium">Custom theme on your profile</p>
-                    </div>
-                    <div class="text-blue-purplish text-xs font-medium">
-                        <p v-if="!yearly">+$2/mo</p>
-                        <p v-else>+$20/yr</p>
-                    </div>
-                </div>
-            </label>
+            <AddOnItem title="Online service" description="Access to multiplayer games">
+                <template #monthlyPrice v-if="!yearly">+$1/mo</template>
+                <template #yearlyPrice v-else>+$10/yr</template>
+            </AddOnItem>
+            <AddOnItem title="Larger storage" description="Extra 1TB of cloud save">
+                <template #monthlyPrice v-if="!yearly">+$2/mo</template>
+                <template #yearlyPrice v-else>+$20/yr</template>
+            </AddOnItem>
+            <AddOnItem title="Customizable profile" description="Custom theme on your profile">
+                <template #monthlyPrice v-if="!yearly">+$2/mo</template>
+                <template #yearlyPrice v-else>+$20/yr</template>
+            </AddOnItem>
         </template>
         <template #buttons>
             <button class="text-gray-cool m-4 justify-self-start" @click="goBack">Go back</button>
