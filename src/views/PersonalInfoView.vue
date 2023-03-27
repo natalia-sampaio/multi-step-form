@@ -7,6 +7,9 @@ import useVuelidate from '@vuelidate/core';
 import { required, minLength, email, numeric } from '@vuelidate/validators'
 import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { usePlanStore } from '@/stores/plan';
+
+const store = usePlanStore();
 
 const formData = reactive({
   name: "",
@@ -38,6 +41,11 @@ const router = useRouter();
 const submitForm = async () => {
   const result = await v$.value.$validate();
   if(result) {
+    store.$patch({
+      name: formData.name,
+      email: formData.email,
+      phoneNumber: formData.phoneNumber
+    })
     router.push('/select-plan')
   } else {
     router.push('/')

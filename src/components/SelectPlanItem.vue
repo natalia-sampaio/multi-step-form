@@ -1,5 +1,10 @@
 <script setup>
+import { usePlanStore } from '@/stores/plan';
+
+const store = usePlanStore();
+
 defineProps({
+    planId: 0,
     title: "",
     peerName: "",
     peerDefinition: "",
@@ -8,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-    <input :id="`${title}`" name="plan" type="radio" :class="`sr-only` + peerName" :aria-label="`radio for ${title}`" checked>
+    <input :id="`${title}`" name="plan" type="radio" :class="`sr-only` + peerName" :aria-label="`radio for ${title}`" checked @change="$event => $event.target.checked ? $emit('selected-plan', planId) : ''">
     <label :for="`${title}`" :class="`flex items-center border border-gray-light hover:cursor-pointer rounded-md p-4 my-2 lg:grid lg:w-[30%] ` + peerDefinition">
         <slot></slot>
         <div class="ml-4 lg:ml-0 lg:mt-8">
