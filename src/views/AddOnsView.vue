@@ -26,7 +26,7 @@ export default {
 <template>
     <Card>
         <template #title>Pick add-ons</template>
-        <template #description>Please provide your name, email address and phone number.</template>
+        <template #description>Add-ons help enhance your gaming experience.</template>
         <template #body>
             <AddOnItem title="Online service" description="Access to multiplayer games" idName="onlineService">
                 <template #monthlyPrice v-if="!yearly">+$1/mo</template>
