@@ -48,17 +48,17 @@ export default {
     methods: {
         nextStep () {
             const plan = this.plans.find(plan => plan.id === this.selectedPlan);
-            const store = usePlanStore() 
+            const store = usePlanStore();
             store.$patch({
                 plan: plan.title,
                 monthlyPrice: plan.monthlyPrice,
                 yearlyPrice: plan.yearlyPrice,
                 yearly: this.yearly
-            })
-            //this.$router.push('/add-ons')
+            });
+            this.$router.push('/add-ons');
         },
         goBack () {
-            this.$router.push('/')
+            this.$router.push('/');
         }
     }
 }

@@ -1,24 +1,67 @@
 <script setup>
-import { useRouter,  } from 'vue-router';
 import AddOnItem from '../components/AddOnItem.vue';
 import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
+import { usePlanStore } from '../stores/plan';
 
-const router = useRouter();
-
-const nextStep = () => {
-    router.push('/finishing-up')
-}
-
-const goBack = () => {
-    router.push('/select-plan')
-}
 </script>
 
 <script>
 export default {
     props: {
         yearly: Boolean
+    },
+    data() {
+        return {
+            selectedAddons: [],
+            addOns: [
+                {
+                    id: 1,
+                    title: 'Online service',
+                    monthlyPrice: 1,
+                    yearlyPrice: 10,
+                    description: 'Access to multiplayer games',
+                    idName: 'onlineService'
+                },
+                {
+                    id: 2,
+                    title: 'Larger storage',
+                    monthlyPrice: 2,
+                    yearlyPrice: 20,
+                    description: 'Extra 1TB of cloud save',
+                    idName: 'largerStorage'
+                },
+                {
+                    id: 3,
+                    title: 'Customizable profile',
+                    monthlyPrice: 2,
+                    yearlyPrice: 20,
+                    description: 'Custom theme on your profile',
+                    idName: 'customProfile'
+                }
+            ]
+        }
+    },
+    methods: {
+        nextStep() {
+            const store = usePlanStore();
+            store.$patch({
+                addOns: this.selectedAddons
+            });
+            this.$router.push('/finishing-up');
+        },
+        goBack() {
+            this.$router.push('/select-plan');
+        },
+        updateAddOns(addOnId) {
+            if(!this.selectedAddons.find(addOn => addOn.id === addOnId)){
+                const addOn = this.addOns.find(addOn => addOn.id === addOnId);
+                this.selectedAddons.push(addOn);
+            }
+        },
+        removeAddon(addOnId) {
+            this.selectedAddons.splice(this.selectedAddons.findIndex(addOn => addOn.id === addOnId), 1);
+        }
     }
 }
 </script>
@@ -28,17 +71,9 @@ export default {
         <template #title>Pick add-ons</template>
         <template #description>Add-ons help enhance your gaming experience.</template>
         <template #body>
-            <AddOnItem title="Online service" description="Access to multiplayer games" idName="onlineService">
-                <template #monthlyPrice v-if="!yearly">+$1/mo</template>
-                <template #yearlyPrice v-else>+$10/yr</template>
-            </AddOnItem>
-            <AddOnItem title="Larger storage" description="Extra 1TB of cloud save" idName="largerStorage">
-                <template #monthlyPrice v-if="!yearly">+$2/mo</template>
-                <template #yearlyPrice v-else>+$20/yr</template>
-            </AddOnItem>
-            <AddOnItem title="Customizable profile" description="Custom theme on your profile" idName="customProfile">
-                <template #monthlyPrice v-if="!yearly">+$2/mo</template>
-                <template #yearlyPrice v-else>+$20/yr</template>
+            <AddOnItem v-for="addOn in addOns" :addOnId="addOn.id" :title="addOn.title" :description="addOn.description" :idName="addOn.idName" @selectedAddon="addOnId => updateAddOns(addOnId)" @removedAddon="addOnId => removeAddon(addOnId)">
+                <template #monthlyPrice v-if="!yearly">+${{ addOn.monthlyPrice }}/mo</template>
+                <template #yearlyPrice v-else>+${{ addOn.yearlyPrice }}/yr</template>
             </AddOnItem>
         </template>
         <template #buttons>
