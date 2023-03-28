@@ -31,8 +31,8 @@ module.exports = {
         paragraph: '16px'
       },
       backgroundImage: {
-        'sidebar-desktop': "url('./src/assets/images/bg-sidebar-desktop.svg')",
-        'sidebar-mobile': "url('./src/assets/images/bg-sidebar-mobile.svg')"
+        'sidebar-desktop': "url('/bg-sidebar-desktop.svg')",
+        'sidebar-mobile': "url('/bg-sidebar-mobile.svg')"
       },
       screens: {
         'mobile': '365px',
