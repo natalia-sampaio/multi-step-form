@@ -8,6 +8,7 @@ import { required, minLength, email, numeric } from '@vuelidate/validators'
 import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePlanStore } from '@/stores/plan';
+import { ref } from 'vue';
 
 const store = usePlanStore();
 
@@ -37,6 +38,7 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, formData);
 
 const router = useRouter();
+const warn = ref(false);
 
 const submitForm = async () => {
   const result = await v$.value.$validate();
@@ -48,6 +50,10 @@ const submitForm = async () => {
     })
     router.push('/select-plan')
   } else {
+    warn.value = true;
+    setTimeout(() => {
+      warn.value = false
+    }, 1500)
     router.push('/')
   }
 }
@@ -75,7 +81,37 @@ const submitForm = async () => {
       </FormItem>
       </template>
       <template #buttons>
-        <Button @click="submitForm" :extraClasses="'bg-blue-marine focus:animate-button_shake'" :name="'Next Step'"/>
+          <Button @click="submitForm" :extraClasses="'bg-blue-marine'" :class="{ shake: warn }" :name="'Next Step'"/>
       </template>
     </Card>
 </template>
+<style scoped> 
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+</style>
