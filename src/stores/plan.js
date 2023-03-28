@@ -14,8 +14,19 @@ export const usePlanStore = defineStore('plan', {
     }
   },
   getters: {
-    count() {
-      return this.addOns.length
+    count: (state) => state.addOns.length,
+    addOnsIsEmpty: (state) => state.count === 0,
+    totalAddOnsMonthlyPrice() {
+      return this.addOns.reduce((acc, addOn) => acc + addOn.monthlyPrice, 0)
+    },
+    totalAddOnsYearlyPrice() {
+      return this.addOns.reduce((acc, addOn) => acc + addOn.yearlyPrice, 0)
+    },
+    totalMonthlyPrice() {
+      return this.totalAddOnsMonthlyPrice + this.monthlyPrice
+    },
+    totalYearlyPrice() {
+      return this.totalAddOnsYearlyPrice + this.yearlyPrice
     }
   }
 })

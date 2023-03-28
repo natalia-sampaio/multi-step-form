@@ -42,7 +42,7 @@ export default {
                         <span v-else>${{ planStore.yearlyPrice }}/yr</span>
                     </div>
                 </div>
-                <p v-if="planStore.count == 0" class="text-gray-cool mt-2">No add-ons where selected.</p>
+                <p v-if="planStore.addOnsIsEmpty" class="text-gray-cool mt-2">No add-ons where selected.</p>
                 <FinishingUpItem v-else v-for="addOn in planStore.addOns">
                     <template #addOn>{{ addOn.title }}</template>
                     <template #monthlyPrice v-if="!yearly">+${{ addOn.monthlyPrice }}/mo</template>
@@ -53,8 +53,8 @@ export default {
                 <div class="flex justify-between p-4">
                     <span class="text-gray-cool">Total (<span v-if="!yearly">per month</span><span v-else>per year</span>)</span>
                     <div class="text-blue-purplish">
-                        <span v-if="!yearly">+$12/mo</span>
-                        <span v-else>+$120/yr</span>
+                        <span v-if="!yearly">+${{ planStore.totalMonthlyPrice }}/mo</span>
+                        <span v-else>+${{ planStore.totalYearlyPrice }}/yr</span>
                     </div>
                 </div>
             </div>
