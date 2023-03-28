@@ -7,7 +7,6 @@ import IconPro from '../components/icons/IconPro.vue';
 import SelectPlanItem from '../components/SelectPlanItem.vue';
 import { usePlanStore } from '@/stores/plan';
 
-const store = usePlanStore();
 </script>
 
 <script>
@@ -48,8 +47,9 @@ export default {
     },
     methods: {
         nextStep () {
-            const plan = this.plans.find(plan => plan.id === this.selectedPlan) 
-            $store.$patch({
+            const plan = this.plans.find(plan => plan.id === this.selectedPlan);
+            const store = usePlanStore() 
+            store.$patch({
                 plan: plan.title,
                 monthlyPrice: plan.monthlyPrice,
                 yearlyPrice: plan.yearlyPrice,

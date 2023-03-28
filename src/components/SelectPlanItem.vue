@@ -1,8 +1,4 @@
 <script setup>
-import { usePlanStore } from '@/stores/plan';
-
-const store = usePlanStore();
-
 defineProps({
     planId: 0,
     title: "",
