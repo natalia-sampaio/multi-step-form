@@ -1,23 +1,27 @@
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
 import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
+import FinishingUpItem from '../components/FinishingUpitem.vue';
+import { usePlanStore } from '../stores/plan';
 
-const router = useRouter();
-
-const nextStep = () => {
-    router.push('/thank-you')
-}
-
-const goBack = () => {
-    router.push('/add-ons')
-}
+const planStore = usePlanStore()
 </script>
 
 <script>
 export default {
     props: {
         yearly: Boolean
+    },
+    methods: {
+        confirm() {
+            this.$router.push('/thank-you');
+        },
+        goBack() {
+            this.$router.push('/add-ons');
+        },
+        change() {
+            this.$router.push('/select-plan');
+        }
     }
 }
 </script>
@@ -30,28 +34,20 @@ export default {
             <div class="bg-magnolia rounded-md p-4">
                 <div class="flex justify-between border-b border-gray-light pb-2">
                     <div class="grid place-items-start">
-                        <span>Arcade (<span v-if="!yearly">Monthly</span><span v-else>Yearly</span>)</span>
-                        <RouterLink to="/select-plan"><button class="text-gray-cool underline font-medium">Change</button></RouterLink>                  
+                        <span class="capitalize">{{ planStore.plan }} (<span v-if="!yearly">Monthly</span><span v-else>Yearly</span>)</span>
+                        <button class="text-gray-cool underline font-medium" @click="change">Change</button>              
                     </div>
                     <div>
-                        <span v-if="!yearly">$9/mo</span>
-                        <span v-else>$90/yr</span>
+                        <span v-if="!yearly">${{ planStore.monthlyPrice }}/mo</span>
+                        <span v-else>${{ planStore.yearlyPrice }}/yr</span>
                     </div>
                 </div>
-                <div class="flex justify-between font-medium py-2">
-                    <span class="text-gray-cool">Online service</span>
-                    <div>
-                        <span v-if="!yearly">+$1/mo</span>
-                        <span v-else>+$10/yr</span>
-                    </div>
-                </div>
-                <div class="flex justify-between font-medium">
-                    <span class="text-gray-cool">Larger storage</span>
-                    <div>
-                        <span v-if="!yearly">+$2/mo</span>
-                        <span v-else>+$20/yr</span>
-                    </div>
-                </div>
+                <p v-if="planStore.count == 0" class="text-gray-cool mt-2">No add-ons where selected.</p>
+                <FinishingUpItem v-else v-for="addOn in planStore.addOns">
+                    <template #addOn>{{ addOn.title }}</template>
+                    <template #monthlyPrice v-if="!yearly">+${{ addOn.monthlyPrice }}/mo</template>
+                    <template #yearlyPrice v-else>+${{ addOn.yearlyPrice }}/yr</template>
+                </FinishingUpItem>
             </div>
             <div>
                 <div class="flex justify-between p-4">
@@ -65,7 +61,7 @@ export default {
         </template>
         <template #buttons>
             <button class="text-gray-cool m-4 justify-self-start" @click="goBack">Go back</button>
-            <Button :extraClasses="'bg-blue-purplish justify-self-end'" :name="'Confirm'" @click="nextStep"/>
+            <Button :extraClasses="'bg-blue-purplish justify-self-end'" :name="'Confirm'" @click="confirm"/>
         </template>
     </Card>
 </template>
